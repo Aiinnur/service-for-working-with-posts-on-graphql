@@ -1,0 +1,31 @@
+schema:
+  - graph/*.graphqls
+
+exec:
+  filename: graph/generated.go
+
+model:
+  filename: graph/model/models_gen.go
+
+models:
+  Comment:
+    model: service-for-working-with-posts-on-graphql/internal/models.Comment
+    fields:
+      children:
+        resolver: true
+  Post:
+    model: service-for-working-with-posts-on-graphql/internal/models.Post
+    fields:
+      comments:
+        resolver: true
+
+resolver:
+  layout: follow-schema
+  dir: "graph"
+  package: graph
+
+complexity:
+  Post: 2
+  Comment: 1
+
+autobind: []
